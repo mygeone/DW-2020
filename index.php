@@ -1,8 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors","1");
-include("header.php");
-require 'vendor/autoload.php';
+include_once("/var/www/html/pages/header.php");
+require '/var/www/html/vendor/autoload.php';
 $uri = 'mongodb://localhost';
 $client=new MongoDB\Client($uri);
 $collection = $client->tienda->categorias->find();
@@ -31,7 +29,7 @@ $categoria = $client->tienda->categorias->findOne(['_id' =>new  MongoDB\BSON\Obj
 ?>
     <div class="card border-0" style="width: 25rem;">
 		<div class="display-4"><?php echo $cat ?></div>
-		  <a href="cat.php?key=<?php echo $key?>">
+		  <a href="/pages/cat.php?key=<?php echo $key?>">
 		<img style="margin-bot: 100px;" class="card-img-top" src="<?php echo $categoria['img'] ?>" alt="Card image cap">
     	</a>
 	<div class="card-body">
@@ -42,4 +40,4 @@ $categoria = $client->tienda->categorias->findOne(['_id' =>new  MongoDB\BSON\Obj
 </div>
 <!--/menu cards -->
 
-<?php include_once("footer.php");?>
+<?php include_once("/var/www/html/pages/footer.php");?>
